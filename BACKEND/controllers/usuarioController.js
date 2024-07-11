@@ -21,8 +21,11 @@ export async function obtenerUsuarioPorId(req, res) {
   }
 }
 
-export async function crearUsuario(req, res) {
+export const crearUsuario = async (req, res) => {
   const { nombre, email, contraseña } = req.body;
+  if (!nombre || !email || !contraseña) {
+    return res.status(400).json({ message: 'Todos los campos son obligatorios' });
+  }
   const nuevoUsuario = new Usuario({ nombre, email, contraseña });
   try {
     const usuarioCreado = await nuevoUsuario.save();
@@ -30,7 +33,20 @@ export async function crearUsuario(req, res) {
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-}
+};
+
+export const loginUsuario = async (req, res) => {
+  const { email, contraseña } = req.body;
+  try {
+    const usuario = await Usuario.findOne({ email });
+    if (!usuario || usuario.contraseña !== contraseña) {
+      return res.status(400).json({ message: 'Credenciales incorrectas' });
+    }
+    res.json({ message: 'Inicio de sesión exitoso', usuario });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 export async function eliminarUsuario(req, res) {
   try {
