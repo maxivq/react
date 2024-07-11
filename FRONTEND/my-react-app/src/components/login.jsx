@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({ setLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [contraseña, setContraseña] = useState('');
 
@@ -16,13 +16,16 @@ const Login = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Error en la solicitud');
+        const errorMessage = await response.json();
+        throw new Error(errorMessage.message);
       }
 
       const data = await response.json();
-      console.log(data);
+      localStorage.setItem('token', data.token);
+      setLoggedIn(true); // Actualizar el estado de loggedIn a true
+      console.log('Inicio de sesión exitoso:', data);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error al iniciar sesión:', error.message);
     }
   };
 

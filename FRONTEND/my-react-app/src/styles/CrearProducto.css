@@ -1,0 +1,60 @@
+/* CrearProducto.css */
+
+.crear-producto-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .crear-producto-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .crear-producto-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .crear-producto-input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .crear-producto-textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+  }
+  
+  .crear-producto-submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .crear-producto-submit:hover {
+    background-color: #0056b3;
+  }
+  
+  .crear-producto-success {
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  

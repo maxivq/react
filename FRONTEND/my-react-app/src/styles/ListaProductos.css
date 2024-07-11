@@ -1,0 +1,52 @@
+.productos-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .producto {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .producto-info {
+    flex: 1;
+  }
+  
+  .producto-nombre {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .producto-precio {
+    color: #007bff;
+    font-size: 1rem;
+  }
+  
+  .producto-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .producto-buttons button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .producto-buttons button:hover {
+    background-color: #c82333;
+  }
