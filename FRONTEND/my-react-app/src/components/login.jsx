@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/AuthForms.css';
 
 const Login = ({ setLoggedIn }) => {
   const [email, setEmail] = useState('');
@@ -27,15 +28,35 @@ const Login = ({ setLoggedIn }) => {
     } catch (error) {
       console.error('Error al iniciar sesión:', error.message);
     }
+    setLoggedIn(true);
+    localStorage.setItem('token', 'yourAuthToken'); // Guardar token en localStorage
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Iniciar Sesión</h2>
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      <input type="password" placeholder="Contraseña" value={contraseña} onChange={(e) => setContraseña(e.target.value)} required />
-      <button type="submit">Iniciar Sesión</button>
-    </form>
+    <div className="auth-form-container">
+      <h2 className="auth-form-title">Iniciar Sesión</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          className="auth-form-input"
+          placeholder="Correo electrónico"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          className="auth-form-input"
+          placeholder="Contraseña"
+          value={contraseña}
+          onChange={(e) => setContraseña(e.target.value)}
+          required
+        />
+        <button type="submit" className="auth-form-submit">
+          Iniciar Sesión
+        </button>
+      </form>
+    </div>
   );
 };
 
