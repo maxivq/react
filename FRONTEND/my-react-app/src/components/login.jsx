@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/AuthForms.css';
 
-const Login = ({ setLoggedIn }) => {
+const Login = ({ setLoggedIn, setIsAdmin }) => {
   const [email, setEmail] = useState('');
   const [contraseña, setContraseña] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,13 +25,17 @@ const Login = ({ setLoggedIn }) => {
 
       const data = await response.json();
       localStorage.setItem('token', data.token);
-      setLoggedIn(true); // Actualizar el estado de loggedIn a true
-      console.log('Inicio de sesión exitoso:', data);
+      localStorage.setItem('user', JSON.stringify({ email })); // Guardar información del usuario
+      setLoggedIn(true);
+
+      if (email === 'admin@example.com') {
+        setIsAdmin(true);
+      }
+
+      navigate('/'); // Redirigir al inicio después de iniciar sesión
     } catch (error) {
       console.error('Error al iniciar sesión:', error.message);
     }
-    setLoggedIn(true);
-    localStorage.setItem('token', 'yourAuthToken'); // Guardar token en localStorage
   };
 
   return (
